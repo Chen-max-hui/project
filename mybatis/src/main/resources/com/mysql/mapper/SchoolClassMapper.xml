@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mysql.mapper.SchoolClassMapper">
+
+    <select id="selectAll" resultType="schoolClass">
+        select * from t_school_class
+    </select>
+
+    <select id="selectById2" resultType="schoolClass">
+        select * from t_school_class where id=#{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from t_school_class where id=#{id}
+    </delete>
+
+    <update id="updateInfo">
+        update t_school_class set className=#{className},classDesc=#{classDesc} where id=#{id}
+    </update>
+    <insert id="insertDemo" parameterType="schoolClass">
+        insert into t_school_class values (#{id},#{className},#{classDesc})
+    </insert>
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mysql.mapper.StudentMapper">
+
+    <insert id="insertStu" parameterType="student">
+        insert into t_student values (#{id},#{name},#{sn},#{sex},#{dept},#{classId},#{address})
+    </insert>
+
+    <resultMap id="stu" type="com.mysql.pojo.Student">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sn" column="sn"/>
+        <result property="sex" column="sex"/>
+        <result property="dept" column="dept"/>
+        <result property="classId" column="classId"/>
+        <result property="address" column="address"/>
+        <association property="schoolClass" javaType="com.mysql.pojo.SchoolClass" select="com.mysql.mapper.SchoolClassMapper.selectById2" column="classId"/>
+    </resultMap>
+    <select id="selectById1" resultMap="stu">
+        select id,name,sn,sex,dept,classId,address from t_student where classId=#{classId}
+    </select>
+
+    <delete id="deleteById">
+        delete from t_student where id=#{id}
+    </delete>
+
+    <select id="isExistById" resultType="boolean">
+        select exists(select * from t_student where classId=#{classId})
+    </select>
+    <update id="updateById" parameterType="student">
+        update t_student set name=#{name},sn=#{sn},sex=#{sex},dept=#{dept},address=#{address},classId=#{classId} where id=#{id}
+    </update>
+</mapper>
