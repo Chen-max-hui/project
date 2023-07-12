@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+      <h1 v-if="true">{{name}}</h1>
+      <h1 v-if="true">{{age+15}}</h1>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+      new Vue({
+        el:'#app',
+        data:{
+          name:'tom',
+          age:17,
+        }
+      })
+    </script>
+</body>
+</html>
