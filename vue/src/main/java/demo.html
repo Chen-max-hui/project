@@ -5,13 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-    <div id="app">
-      <h1 v-if="true">{{name}}</h1>
-      <h1 v-if="true">{{age+15}}</h1>
-    </div>
     <script src="js/vue.js"></script>
+    <div id="app">
+        <h1>{{name}}</h1>
+    </div>
     <script>
-      new Vue({
+      const vue=Vue({
         el:'#app',
         data:{
           name:'tom',
